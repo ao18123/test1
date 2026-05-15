@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Van Gelder Utrecht — Loodgieter & Renovatie | 030-2808060</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #1C3152;
+    --blue: #1A5FA8;
+    --blue-light: #2E7DD4;
+    --accent: #E8A020;
+    --accent-light: #F5C75A;
+    --cream: #F8F5EE;
+    --white: #FFFFFF;
+    --gray-100: #F2F0EB;
+    --gray-300: #D4D0C8;
+    --gray-500: #8A8780;
+    --gray-700: #4A4844;
+    --text: #1A1816;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--text); background: var(--cream); line-height: 1.65; }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 68px;
+    box-shadow: 0 2px 24px rgba(0,0,0,.35);
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 38px; height: 38px;
+    background: var(--accent);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 22px; height: 22px; fill: var(--navy); }
+  .logo-text { color: var(--white); font-family: var(--serif); font-size: 1.15rem; letter-spacing: .01em; line-height: 1.2; }
+  .logo-text span { display: block; font-family: var(--sans); font-size: .7rem; font-weight: 300; color: var(--gray-300); letter-spacing: .12em; text-transform: uppercase; }
+
+  nav { display: flex; align-items: center; gap: 2rem; }
+  nav a { color: var(--gray-300); font-size: .88rem; font-weight: 400; text-decoration: none; letter-spacing: .03em; transition: color .2s; }
+  nav a:hover { color: var(--white); }
+
+  .header-cta {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .tel-badge {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--accent-light); font-weight: 600; font-size: .95rem; text-decoration: none;
+  }
+  .tel-badge svg { width: 16px; height: 16px; fill: var(--accent); }
+  .btn-primary {
+    background: var(--accent); color: var(--navy); font-family: var(--sans);
+    font-weight: 600; font-size: .85rem; letter-spacing: .04em;
+    padding: .55rem 1.3rem; border-radius: var(--radius);
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+  /* ── ALERT BANNER ── */
+  .alert-banner {
+    background: #7B1F1F; color: #FFD6D6;
+    font-size: .82rem; text-align: center; padding: .6rem 2rem;
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+  }
+  .alert-banner strong { color: #FFA0A0; }
+  .alert-banner svg { width: 14px; height: 14px; fill: #FFA0A0; flex-shrink: 0; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 88vh;
+    background: var(--navy);
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 80px);
+  }
+  .hero-accent-bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 5px; background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .hero-content { padding: 5rem 3rem 5rem 5rem; position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.3);
+    color: var(--accent-light); font-size: .78rem; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: .35rem .9rem; border-radius: 20px; margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; }
+  .hero h1 {
+    font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.8rem);
+    color: var(--white); line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p { color: var(--gray-300); font-size: 1.05rem; font-weight: 300; max-width: 480px; margin-bottom: 2.5rem; }
+  .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,.3); color: var(--white);
+    font-family: var(--sans); font-weight: 500; font-size: .88rem;
+    padding: .7rem 1.6rem; border-radius: var(--radius); text-decoration: none;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.06); }
+  .hero-cta-main {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--navy);
+    font-weight: 700; font-size: 1rem; padding: .85rem 2rem;
+    border-radius: var(--radius); text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .hero-cta-main:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .hero-cta-main svg { width: 18px; height: 18px; fill: var(--navy); }
+
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; }
+  .hero-stat { border-left: 2px solid rgba(232,160,32,.4); padding-left: 1rem; }
+  .hero-stat .num { font-family: var(--serif); font-size: 2rem; color: var(--accent); line-height: 1; }
+  .hero-stat .lbl { font-size: .78rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; margin-top: .2rem; }
+
+  .hero-visual {
+    position: relative; height: 100%;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, #0D2140 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-visual-inner {
+    position: relative; z-index: 1;
+    width: 380px; max-width: 90%;
+  }
+  .service-card-hero {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+    border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+    backdrop-filter: blur(4px);
+    animation: floatUp 3s ease-in-out infinite alternate;
+  }
+  .service-card-hero:nth-child(2) { animation-delay: .5s; margin-left: 2rem; }
+  .service-card-hero:nth-child(3) { animation-delay: 1s; }
+  @keyframes floatUp { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+  .sc-icon {
+    width: 48px; height: 48px; border-radius: 10px; background: rgba(232,160,32,.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .sc-icon svg { width: 26px; height: 26px; fill: var(--accent); }
+  .sc-text .title { color: var(--white); font-weight: 500; font-size: .95rem; margin-bottom: .2rem; }
+  .sc-text .sub { color: var(--gray-500); font-size: .8rem; }
+
+  .available-badge {
+    position: absolute; top: 2rem; right: 2rem;
+    background: rgba(30,200,100,.15); border: 1px solid rgba(30,200,100,.4);
+    color: #5EE89A; font-size: .75rem; font-weight: 600;
+    padding: .4rem .9rem; border-radius: 20px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pulse { width: 7px; height: 7px; background: #5EE89A; border-radius: 50%; animation: pulse 1.5s ease infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.5; transform:scale(1.4);} }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 5rem; }
+  .section-label {
+    display: inline-block; font-size: .75rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .12em; color: var(--blue);
+    margin-bottom: .75rem;
+  }
+  .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; margin-bottom: 1rem; }
+  .section-lead { color: var(--gray-700); font-size: 1.05rem; font-weight: 300; max-width: 580px; }
+
+  /* ── USP STRIP ── */
+  .usp-strip {
+    background: var(--navy-mid); padding: 2.5rem 5rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  }
+  .usp-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .usp-icon { width: 42px; height: 42px; background: rgba(232,160,32,.15); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .usp-icon svg { width: 22px; height: 22px; fill: var(--accent); }
+  .usp-item h4 { color: var(--white); font-size: .9rem; font-weight: 600; margin-bottom: .2rem; }
+  .usp-item p { color: var(--gray-500); font-size: .82rem; line-height: 1.5; }
+
+  /* ── DIENSTEN ── */
+  .diensten { background: var(--cream); }
+  .diensten-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .dienst-card {
+    background: var(--white); border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg); padding: 2rem;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    cursor: default;
+  }
+  .dienst-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.08); border-color: var(--blue-light); }
+  .dienst-icon { width: 52px; height: 52px; border-radius: 10px; background: #EBF3FB; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+  .dienst-icon svg { width: 28px; height: 28px; fill: var(--blue); }
+  .dienst-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .6rem; }
+  .dienst-card p { color: var(--gray-700); font-size: .9rem; line-height: 1.6; }
+  .dienst-card a { display: inline-block; margin-top: 1.2rem; color: var(--blue); font-size: .85rem; font-weight: 500; text-decoration: none; }
+  .dienst-card a:hover { text-decoration: underline; }
+
+  /* ── 24U SERVICE ── */
+  .service-24 {
+    background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .service-24 .section-title { color: var(--white); }
+  .service-24 .section-lead { color: var(--gray-300); }
+  .response-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .response-item { display: flex; align-items: center; gap: 1rem; }
+  .response-icon { width: 36px; height: 36px; background: rgba(232,160,32,.2); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .response-icon svg { width: 18px; height: 18px; fill: var(--accent); }
+  .response-item p { color: var(--gray-300); font-size: .9rem; }
+  .response-item strong { color: var(--white); }
+  .service-24-visual {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-lg); padding: 2.5rem; text-align: center;
+  }
+  .big-clock { font-family: var(--serif); font-size: 5rem; color: var(--accent); line-height: 1; margin-bottom: .5rem; }
+  .clock-label { color: var(--gray-300); font-size: .85rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2rem; }
+  .phone-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--navy); font-weight: 700; font-size: 1.2rem; padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; transition: background .2s; }
+  .phone-cta:hover { background: var(--accent-light); }
+  .phone-cta svg { width: 22px; height: 22px; fill: var(--navy); }
+  .emergency-note { color: var(--gray-500); font-size: .78rem; margin-top: 1.2rem; }
+
+  /* ── WERKWIJZE ── */
+  .werkwijze { background: var(--white); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; position: relative; }
+  .steps::before {
+    content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--accent)); border-radius: 2px;
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--blue); color: var(--white);
+    font-family: var(--serif); font-size: 1.4rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem; border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--blue);
+  }
+  .step:last-child .step-num { background: var(--accent); box-shadow: 0 0 0 3px var(--accent); color: var(--navy); }
+  .step h4 { font-weight: 600; margin-bottom: .5rem; }
+  .step p { color: var(--gray-700); font-size: .85rem; }
+
+  /* ── WAARSCHUWING ── */
+  .warning-section {
+    background: #FFF8E8; border-top: 3px solid var(--accent); border-bottom: 3px solid var(--accent);
+    padding: 2.5rem 5rem; display: flex; align-items: flex-start; gap: 1.5rem;
+  }
+  .warning-icon { width: 52px; height: 52px; background: rgba(232,160,32,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .warning-icon svg { width: 28px; height: 28px; fill: var(--accent); }
+  .warning-section h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; color: #7A4A00; }
+  .warning-section p { color: #6B4200; font-size: .9rem; line-height: 1.7; }
+  .warning-section a { color: var(--blue); }
+
+  /* ── CERTIFICERINGEN ── */
+  .certs { background: var(--gray-100); padding: 4rem 5rem; text-align: center; }
+  .certs-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--gray-500); margin-bottom: 2rem; }
+  .certs-row { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+  .cert-badge {
+    background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px;
+    padding: .7rem 1.4rem; font-size: .82rem; font-weight: 600; color: var(--gray-700);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .cert-badge svg { width: 16px; height: 16px; fill: var(--blue); }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-form-wrap { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); padding: 2.5rem; }
+  .contact-form-wrap h2 { font-family: var(--serif); font-size: 1.6rem; margin-bottom: .5rem; }
+  .contact-form-wrap p { color: var(--gray-700); font-size: .9rem; margin-bottom: 2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { margin-bottom: 1.2rem; }
+  .field label { display: block; font-size: .82rem; font-weight: 500; margin-bottom: .4rem; }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: .75rem 1rem; border: 1.5px solid var(--gray-300);
+    border-radius: var(--radius); font-family: var(--sans); font-size: .9rem;
+    transition: border-color .2s; background: var(--white); color: var(--text);
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--blue); }
+  .field textarea { resize: vertical; min-height: 110px; }
+  .btn-submit {
+    width: 100%; background: var(--blue); color: var(--white); font-family: var(--sans);
+    font-weight: 600; font-size: 1rem; padding: .9rem; border: none;
+    border-radius: var(--radius); cursor: pointer; transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--blue-light); }
+
+  .contact-info { padding-top: 1rem; }
+  .contact-info .section-title { font-size: 1.8rem; }
+  .info-blocks { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .info-block { display: flex; align-items: flex-start; gap: 1rem; }
+  .info-icon { width: 44px; height: 44px; background: var(--white); border: 1px solid var(--gray-300); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-icon svg { width: 20px; height: 20px; fill: var(--blue); }
+  .info-block h4 { font-weight: 600; font-size: .9rem; margin-bottom: .2rem; }
+  .info-block p, .info-block a { color: var(--gray-700); font-size: .88rem; text-decoration: none; }
+  .info-block a:hover { color: var(--blue); }
+  .openingstijden { margin-top: 2.5rem; background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); padding: 1.5rem; }
+  .openingstijden h4 { font-weight: 600; margin-bottom: 1rem; font-size: .9rem; }
+  .ot-row { display: flex; justify-content: space-between; padding: .4rem 0; border-bottom: 1px solid var(--gray-100); font-size: .85rem; }
+  .ot-row:last-child { border-bottom: none; }
+  .badge-24 { background: #EBF7F1; color: #0B6E47; font-size: .75rem; font-weight: 600; padding: .2rem .6rem; border-radius: 4px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: var(--gray-500);
+    padding: 3rem 5rem 2rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  }
+  footer h4 { color: var(--white); font-size: .88rem; font-weight: 600; margin-bottom: 1rem; }
+  footer p, footer a { font-size: .83rem; line-height: 1.8; color: var(--gray-500); text-decoration: none; display: block; }
+  footer a:hover { color: var(--accent-light); }
+  .footer-bottom {
+    background: #060D15; text-align: center; padding: 1.2rem 5rem;
+    color: #3A3E44; font-size: .78rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom a { color: #3A3E44; text-decoration: none; }
+  .footer-bottom a:hover { color: var(--gray-500); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    section { padding: 4rem 1.5rem; }
+    .site-header { padding: 0 1.5rem; }
+    nav { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-content { padding: 4rem 1.5rem; }
+    .hero-visual { display: none; }
+    .usp-strip { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+    .diensten-grid { grid-template-columns: 1fr; }
+    .service-24 { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps::before { display: none; }
+    .contact-section { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    .footer-bottom { flex-direction: column; gap: .5rem; padding: 1rem 1.5rem; }
+    .warning-section { padding: 2rem 1.5rem; }
+    .certs { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ALERT BANNER -->
+<div class="alert-banner">
+  <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3l8.5 15h-17L12 5zm-1 5v5h2V10h-2zm0 7v2h2v-2h-2z"/></svg>
+  <strong>Opgelet:</strong> De website loodgietervangelder.nl is GEEN onderdeel van ons. Kijk bij twijfel op deze website of bel <strong>030-2808060</strong>.
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.7 2 6 4.7 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.3-2.7-6-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+    </div>
+    <div class="logo-text">
+      Van Gelder Utrecht
+      <span>Loodgieter & Renovatie</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#diensten">Diensten</a>
+    <a href="#service">Service</a>
+    <a href="#werkwijze">Werkwijze</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="header-cta">
+    <a href="tel:0302808060" class="tel-badge">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      030-2808060
+    </a>
+    <a href="#contact" class="btn-primary">Offerte aanvragen</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-accent-bar"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span> Erkend installateur — Utrecht & omgeving</div>
+    <h1>Vakwerk in loodgieterswerk & <em>renovatie</em></h1>
+    <p>Van Gelder Utrecht is uw betrouwbare partner voor onderhoud, renovatie en spoedservice. Waterdicht vakwerk, waterdichte afspraken — al meer dan 30 jaar.</p>
+    <div class="hero-actions">
+      <a href="tel:0302808060" class="hero-cta-main">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        Bel direct: 030-2808060
+      </a>
+      <a href="#contact" class="btn-outline">Offerte aanvragen</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">30+</div>
+        <div class="lbl">Jaar ervaring</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">24/7</div>
+        <div class="lbl">Beschikbaar</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">≤30</div>
+        <div class="lbl">Min. respons</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="available-badge">
+      <div class="pulse"></div>
+      Nu bereikbaar
+    </div>
+    <div class="hero-visual-inner">
+      <div class="service-card-hero">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zm0-18C7.6 4 4 7.6 4 12s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.5 4v4.8l3.9 2.3-.8 1.3-4.6-2.8V8h1.5z"/></svg>
+        </div>
+        <div class="sc-text">
+          <div class="title">24-uurs spoedservice</div>
+          <div class="sub">Respons binnen 30 minuten</div>
+        </div>
+      </div>
+      <div class="service-card-hero">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 11H7v8h2v-8zm4 0h-2v8h2v-8zm4 0h-2v8h2v-8zM4 21v2h16v-2H4zm8-20L2 7v2h20V7L12 1z"/></svg>
+        </div>
+        <div class="sc-text">
+          <div class="title">Renovatie & onderhoud</div>
+          <div class="sub">Grootschalige projecten</div>
+        </div>
+      </div>
+      <div class="service-card-hero">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3C9.5 3 7 4.1 7 6.5v1H5v13h14V7.5h-2v-1C17 4.1 14.5 3 12 3zm0 2c1.5 0 3 .7 3 1.5v1H9v-1C9 5.7 10.5 5 12 5zm-5 4h10v9H7V9zm5 1.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </div>
+        <div class="sc-text">
+          <div class="title">Erkend installateur</div>
+          <div class="sub">Gecertificeerd & verzekerd</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USP STRIP -->
+<div class="usp-strip">
+  <div class="usp-item">
+    <div class="usp-icon"><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3l8.5 15h-17L12 5zm-1 5v5h2V10h-2zm0 7v2h2v-2h-2z"/></svg></div>
+    <div>
+      <h4>Spoed? Bel ons direct</h4>
+      <p>Telefonisch bereikbaar 24/7 voor noodsituaties</p>
+    </div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
+    <div>
+      <h4>Erkend & gecertificeerd</h4>
+      <p>Landelijk Erkend Installateur met alle certificaten</p>
+    </div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon"><svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg></div>
+    <div>
+      <h4>Geen verrassingen</h4>
+      <p>Vaste prijsafspraken, altijd transparant</p>
+    </div>
+  </div>
+  <div class="usp-item">
+    <div class="usp-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4.9l5 2.22V11c0 3.48-2.34 6.74-5 7.93-2.66-1.19-5-4.45-5-7.93V8.12l5-2.22z"/></svg></div>
+    <div>
+      <h4>Garantie op werk</h4>
+      <p>Kwaliteitsgarantie op al onze werkzaamheden</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIENSTEN -->
+<section class="diensten" id="diensten">
+  <div class="section-label">Wat wij doen</div>
+  <div class="section-title">Onze diensten</div>
+  <p class="section-lead">Van spoedklus tot grootschalige renovatie — Van Gelder Utrecht is uw alles-in-één installateur.</p>
+
+  <div class="diensten-grid">
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.4 1.2 4.5 3 5.7V17h8v-2.3A7 7 0 0 0 19 9a7 7 0 0 0-7-7zm-1 15v2h2v-2h-2zm-3-6H6v-2h2v2zm10 0h-2v-2h2v2z"/></svg>
+      </div>
+      <h3>Leidingwerk</h3>
+      <p>Installatie, reparatie en vervanging van alle soorten leidingwerk. Koper, kunststof of RVS — wij werken met alle materialen.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <h3>Dakbedekking & dakgoten</h3>
+      <p>Platte daken, kilgoten en dakgoten — reparatie, onderhoud of compleet nieuw. Wij zorgen dat het waterdicht blijft.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11H7v8h2v-8zm4 0h-2v8h2v-8zm4 0h-2v8h2v-8zM4 21v2h16v-2H4zm8-20L2 7v2h20V7L12 1z"/></svg>
+      </div>
+      <h3>Badkamer & keuken renovatie</h3>
+      <p>Complete renovaties van uw badkamer of keuken. Van ontwerp tot oplevering, inclusief sanitair en aansluitingen.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      </div>
+      <h3>Onderhoud & inspectie</h3>
+      <p>Preventief onderhoud en inspecties voor woningcorporaties en vastgoedbeheerders. Grootschalig en efficiënt.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-.5 1.5L21.96 13H17V9.5h2.5zM6 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm2.22-3c-.55-.61-1.35-1-2.22-1s-1.67.39-2.22 1H3V6h12v9H8.22zm9.78 3c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+      </div>
+      <h3>Storingsdienst</h3>
+      <p>Lekkages, verstoppingen, kapotte kranen — onze storingsdienst is er altijd. Dag en nacht, 365 dagen per jaar.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+    <div class="dienst-card">
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3L12 3zm0 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      </div>
+      <h3>Utiliteitsbouw</h3>
+      <p>Specialisme in grootschalige renovatie en onderhoud in de utiliteitsbouw. Vaste aannemerspartner voor beheerders.</p>
+      <a href="#contact">Meer info →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 24U SERVICE -->
+<section class="service-24" id="service">
+  <div>
+    <div class="section-label" style="color: var(--accent-light);">Spoedservice</div>
+    <div class="section-title">Dag en nacht voor u klaar</div>
+    <p class="section-lead">Een waterleiding die springt, een verstopte afvoer of een lekkend dak — noodsituaties wachten niet. Wij ook niet.</p>
+    <div class="response-list">
+      <div class="response-item">
+        <div class="response-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg></div>
+        <p><strong>Telefonische respons binnen 30 minuten</strong> — gegarandeerd</p>
+      </div>
+      <div class="response-item">
+        <div class="response-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg></div>
+        <p><strong>Monteur ter plaatse binnen enkele uren</strong> na melding</p>
+      </div>
+      <div class="response-item">
+        <div class="response-icon"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></div>
+        <p><strong>365 dagen per jaar</strong> beschikbaar, ook feestdagen</p>
+      </div>
+    </div>
+  </div>
+  <div class="service-24-visual">
+    <div class="big-clock">24/7</div>
+    <div class="clock-label">Altijd bereikbaar</div>
+    <a href="tel:0302808060" class="phone-cta">
+      <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      030-2808060
+    </a>
+    <p class="emergency-note">Spoed? Wij bellen u terug binnen 30 minuten.</p>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section class="werkwijze" id="werkwijze">
+  <div class="section-label">Hoe werken wij</div>
+  <div class="section-title">Onze werkwijze</div>
+  <p class="section-lead">Helder, betrouwbaar en zonder verrassingen — zo werkt Van Gelder Utrecht.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Contact opnemen</h4>
+      <p>Bel ons of stuur een bericht via het contactformulier. Wij reageren snel.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Inventarisatie</h4>
+      <p>Wij komen kijken, stellen een diagnose en maken een duidelijke offerte.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Uitvoering</h4>
+      <p>Onze gecertificeerde monteurs voeren de werkzaamheden vakkundig uit.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Oplevering & garantie</h4>
+      <p>Wij leveren op, controleren het resultaat en geven garantie op ons werk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WAARSCHUWING -->
+<div class="warning-section">
+  <div class="warning-icon">
+    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3l8.5 15h-17L12 5zm-1 5v5h2V10h-2zm0 7v2h2v-2h-2z"/></svg>
+  </div>
+  <div>
+    <h3>⚠ Let op namaak-website</h3>
+    <p>Wij zijn er mee geconfronteerd dat de website <strong>loodgietervangelder.nl</strong> onze naam misbruikt voor malafide praktijken. Dit bedrijf is <strong>geen</strong> onderdeel van Van Gelder Utrecht. Wij werken altijd op afspraak en vragen nooit contant te betalen ter plaatse. Bij twijfel: bel ons rechtstreeks op <a href="tel:0302808060">030-2808060</a> of mail naar <a href="mailto:info@vangelder-utrecht.nl">info@vangelder-utrecht.nl</a>.</p>
+  </div>
+</div>
+
+<!-- CERTIFICERINGEN -->
+<div class="certs">
+  <div class="certs-label">Erkend en gecertificeerd installateur</div>
+  <div class="certs-row">
+    <div class="cert-badge"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Landelijk Erkend Installateur</div>
+    <div class="cert-badge"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Kwaliteitsgarantie</div>
+    <div class="cert-badge"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> Verzekerd & gecertificeerd</div>
+    <div class="cert-badge"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> MVO-bewust bedrijf</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-form-wrap">
+    <h2>Offerte of vraag?</h2>
+    <p>Vul het formulier in en wij nemen zo snel mogelijk contact op — meestal dezelfde dag.</p>
+    <div class="form-row">
+      <div class="field"><label>Voornaam</label><input type="text" placeholder="Jan"></div>
+      <div class="field"><label>Achternaam</label><input type="text" placeholder="de Vries"></div>
+    </div>
+    <div class="field"><label>E-mailadres</label><input type="email" placeholder="jan@email.nl"></div>
+    <div class="field"><label>Telefoonnummer</label><input type="tel" placeholder="06-12345678"></div>
+    <div class="field">
+      <label>Type aanvraag</label>
+      <select>
+        <option>Offerte aanvragen</option>
+        <option>Spoedmelding</option>
+        <option>Onderhoud inplannen</option>
+        <option>Vacature / werk</option>
+        <option>Anders</option>
+      </select>
+    </div>
+    <div class="field"><label>Omschrijving</label><textarea placeholder="Vertel ons wat er speelt..."></textarea></div>
+    <button class="btn-submit">Verstuur aanvraag</button>
+  </div>
+
+  <div class="contact-info">
+    <div class="section-label">Contactgegevens</div>
+    <div class="section-title">Neem contact op</div>
+    <div class="info-blocks">
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+        <div><h4>Telefoon</h4><a href="tel:0302808060">030-2808060</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><h4>E-mail</h4><a href="mailto:info@vangelder-utrecht.nl">info@vangelder-utrecht.nl</a></div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div><h4>Adres</h4><p>Utrecht, Nederland</p></div>
+      </div>
+    </div>
+    <div class="openingstijden">
+      <h4>Openingstijden kantoor</h4>
+      <div class="ot-row"><span>Maandag – Vrijdag</span><span>08:00 – 17:00</span></div>
+      <div class="ot-row"><span>Zaterdag</span><span>Op afspraak</span></div>
+      <div class="ot-row"><span>Zondag & feestdagen</span><span class="badge-24">24/7 storingslijn</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>Van Gelder Utrecht</h4>
+    <p style="margin-bottom:.8rem;">Loodgietersbedrijf Van Gelder Utrecht is uw betrouwbare partner voor onderhoud, renovatie en 24-uurs service. Landelijk Erkend Installateur, gespecialiseerd in utiliteitsbouw.</p>
+    <a href="tel:0302808060">030-2808060</a>
+    <a href="mailto:info@vangelder-utrecht.nl">info@vangelder-utrecht.nl</a>
+  </div>
+  <div>
+    <h4>Diensten</h4>
+    <a href="#diensten">Leidingwerk</a>
+    <a href="#diensten">Dakbedekking</a>
+    <a href="#diensten">Badkamer renovatie</a>
+    <a href="#diensten">Keuken renovatie</a>
+    <a href="#diensten">Storingsdienst</a>
+    <a href="#diensten">Onderhoud</a>
+  </div>
+  <div>
+    <h4>Bedrijf</h4>
+    <a href="#">Wie is Van Gelder</a>
+    <a href="#">Geschiedenis</a>
+    <a href="#">Certificeringen</a>
+    <a href="#">Vacatures</a>
+    <a href="#">Partners</a>
+    <a href="#">MVO-beleid</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Van Gelder Utrecht — Alle rechten voorbehouden</span>
+  <span><a href="#">Privacy</a> · <a href="#">Disclaimer</a></span>
+</div>
+
+</body>
+</html>
